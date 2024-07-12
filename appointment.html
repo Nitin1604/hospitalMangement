@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Management</title>
+    <link rel="icon" type="img/x-icon" href="/img/hospital.jpg">
+    <link rel="stylesheet" href="input.css">
+    <!-- Bootstrap Css -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+
+
+</head>
+
+<body>
+    <!-- Navbar first -->
+    <nav class="bg-[#0091C6] h-[43px] text-white">
+        <div class="navTxt ml-[650px] pt-[7px] flex gap-28">
+            Get Second Opinion By Experts
+            <div class="navSide bg-[#9FA617] rounded-2xl w-[149px] pl-[7px] pt-[2px]">
+                Write to Chairman
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar first -->
+
+    <!-- Navbar Second -->
+    <nav>
+
+        <img src="https://www.narayanahealth.org/assets/images/logo.svg" alt="svg not found"
+            class="hospitalSvg ml-[67px] mt-[21px]">
+
+        <div class="flex items-center space-x-5 ml-[1080px]">
+            <a href="bookedAppointment.html">
+                <li class="list-none">My Appointment</li>
+            </a>
+            <img src="https://www.sarvodayahospital.com/img/search-grey.svg" alt="Svg not found" class="ml-auto">
+            <div class="w-[173px] bg-[#F58220] text-white px-3 py-1 rounded-lg hover:bg-[#0084B4] cursor-pointer">
+                Book Appointment
+            </div>
+        </div>
+
+    </nav>
+    <!-- Navbar Second -->
+
+
+    <!-- Section Part -->
+    <section class="bannerSec bg-[#0184B5] h-[360px] mt-[20px] flex gap-7">
+        <ul class="text-white ml-[170px] pt-[108px]">
+            <li class="text-[26px]">Our Medical Experts are here for you.</li>
+            <li class="text-[36px] w-[50%]">Get quality medical care and treatment with us.</li>
+            <li class="text-[20px]">Find the required doctor and schedule your appointment now.</li>
+        </ul>
+        <img src="https://www.sarvodayahospital.com/img/group-doctor.png" alt="pic not found"
+            class="doctorPic h-[302px] mt-[59px]">
+
+    </section>
+    <div class="searchResult mt-10">
+        <ul
+            class="flex flex-col md:flex-row gap-4 md:gap-8 w-full md:w-[880px] mx-auto p-4 text-[#5C5C5C] bg-white border-2 border-sky-500 rounded-lg">
+            <li><img src="https://www.sarvodayahospital.com/img/user-blue.svg" alt="svg not found" class="mt-[12px]">
+            </li>
+            <li class="flex-1 mt-2 md:mt-0 md:ml-[-103px]">
+                <input type="text" id="searchInput" placeholder="Search for Doctor / Specialities"
+                    class="w-[250px] ml-[90px] p-2 border rounded">
+            </li>
+            <div class="flex items-center mt-2 md:mt-0">
+                <img src="img/time.png" alt="image not found" class="timeSvg h-[35px] flex-shrink-0">
+                <input type="date" id="selectDate" class="ml-2 p-2 border rounded">
+            </div>
+            <div
+                class="appointmentBtn flex items-center gap-2 bg-[#008FC5] text-white mt-2 md:mt-0 py-2 px-4 rounded-lg cursor-pointer w-full md:w-auto">
+                Book Appointment <img src="https://www.sarvodayahospital.com/img/right-arrow-white.svg"
+                    alt="svg not found" class="rightArrowSvg h-[14px]">
+            </div>
+        </ul>
+    </div>
+
+    <div class="availableDoctors text-[#5C5C5C] ml-[325px] mt-[30px] text-[25px]">
+        <div id = "drcount" class="doctorsCount">
+            <!-- Available Doctors (10) -->
+        </div>
+
+        <div id="doctorList">
+            <!-- DYNAMINCALLY ADD DOCTOR -->
+        </div>
+
+        <!-- Modal -->
+        <div id="myModal" class="fixed inset-0 bg-gray-800 bg-opacity-50 items-center justify-center hidden">
+            <div class="bg-white p-6 rounded-lg shadow-lg w-1/3 ml-[516px] mt-[176px]">
+                <h2 id='modelTitle' class="text-2xl font-bold mb-4"><!-- Auto Filled modal title when clicked on button--></h2>
+
+                <!-- Form -->
+                <form id="bookAppointmentForm">
+                    <!-- Doctor Name -->
+
+                    <input type="hidden" id="doctorIndex" name="doctorIndex" aria-describedby="nameHelp" value="">
+
+                    <div class="mb-3">
+                        <label for="doctorName" class="form-label">Doctor Name</label>
+                        <input id = "doctorNameInput" type="text" name="doctorName" class="form-control" aria-describedby="nameHelp">
+                    </div>
+
+                    <!-- Person Name -->
+                    <div class="mb-3">
+                        <label for="personName" class="form-label">Name</label>
+                        <input type="text" name="personName" class="form-control" id="exampleInputName"
+                            aria-describedby="nameHelp">
+                    </div>
+
+                    <!-- Appointment Time -->
+                    <div class="mb-3">
+                        <label for="appointmentTime" class="form-label">Appointment Time</label>
+                        <input type="time" name="appointmentTime" class="form-control" id="exampleAppointmentTime"
+                            aria-describedby="timeHelp">
+                    </div>
+
+                    <!-- Email -->
+                    <div class="mb-3">
+                        <label for="exampleInputEmail" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="exampleInputEmail"
+                            aria-describedby="emailHelp">
+                        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.
+                        </div>
+                    </div>
+
+                    <!-- Contact -->
+                    <div class="mb-3">
+                        <label for="exampleInputContact" class="form-label">Contact</label>
+                        <input type="text" class="form-control" id="exampleInputContact10">
+                    </div>
+
+                    <!-- Checkbox -->
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck">
+                        <label class="form-check-label" for="exampleCheck">Check me out</label>
+                    </div>
+
+                    <button type="submit" id="closeModalBtn"
+                        class="bookAppointmentBtn bg-red-500 text-white px-4 py-2 rounded">
+                        Book Appointment
+                    </button>
+                </form>
+                <!-- Form -->
+            </div>
+        </div>
+
+    </div>
+
+    </div>
+   
+    <footer class="1stFooter bg-[#fffcfc] h-[343px]">
+        <div class="1stPart mt-[84px]">
+            <img src="https://www.narayanahealth.org/assets/images/logo.svg" alt="svg not found"
+                class="hospitalSvg ml-[67px] mt-[21px]">
+            <ul>
+                <li class="ml-[55px] mt-[20px] text-[20px] font-medium hover:text-[#034EA2] cursor-pointer">Connect With
+                    Us</li>
+
+                <div class="fourLogo flex gap-3 h-[50px] ml-[50px] mt-[24px]">
+                    <img src="logo/fb.jpg" alt="logo not found" class="cursor-pointer">
+                    <img src="logo/twitter.jpg" alt="logo not found" class="cursor-pointer">
+                    <img src="logo/linkedin.jpg" alt="logo not found" class="cursor-pointer">
+                    <img src="logo/instagram.jpg" alt="logo not found" class="cursor-pointer">
+                </div>
+            </ul>
+
+
+            <ul>
+
+                <li class="ml-[54px] mt-[19px] text-[19px] font-medium hover:text-[#EB2127] cursor-pointer">Download The
+                    App</li>
+
+                <div class="downloadImg flex gap-3 ml-[54px] mt-[22px]">
+                    <img alt="playstore image" loading="lazy" width="175" height="75" decoding="async" data-nimg="1"
+                        srcset="https://stgaccinwbsdevlrs01.blob.core.windows.net/newcorporatewbsite/settings/October2023/jXCuKcKE6TlEp40kFSaB.webp?w=256&amp;q=75 1x, https://stgaccinwbsdevlrs01.blob.core.windows.net/newcorporatewbsite/settings/October2023/jXCuKcKE6TlEp40kFSaB.webp?w=384&amp;q=75 2x"
+                        src="https://stgaccinwbsdevlrs01.blob.core.windows.net/newcorporatewbsite/settings/October2023/jXCuKcKE6TlEp40kFSaB.webp?w=384&amp;q=75"
+                        style="color: transparent;">
+
+                    <img alt="appstore image" loading="lazy" width="175" height="75" decoding="async" data-nimg="1"
+                        srcset="https://stgaccinwbsdevlrs01.blob.core.windows.net/newcorporatewbsite/settings/October2023/skqwzEax9ovi5QguZu6q.webp?w=256&amp;q=75 1x, https://stgaccinwbsdevlrs01.blob.core.windows.net/newcorporatewbsite/settings/October2023/skqwzEax9ovi5QguZu6q.webp?w=384&amp;q=75 2x"
+                        src="https://stgaccinwbsdevlrs01.blob.core.windows.net/newcorporatewbsite/settings/October2023/skqwzEax9ovi5QguZu6q.webp?w=384&amp;q=75"
+                        style="color: transparent;">
+                </div>
+            </ul>
+        </div>
+
+        <div class="2ndPart ml-[508px] mt-[-290px]">
+            <ul>
+
+                <li class="text-[20px] font-semibold hover:text-[#ED1C24] cursor-pointer">Patient Guide</li>
+                <li class="text-[16px] font-medium cursor-pointer hover:text-[#008FC5]">Find a Doctor</li>
+                <li class="text-[16px] font-medium mt-[5px] cursor-pointer hover:text-[#008FC5]">Our Network</li>
+                <li class="text-[16px] font-medium mt-[5px] cursor-pointer hover:text-[#008FC5]">Video Consultation</li>
+                <li class="text-[16px] font-medium mt-[5px] cursor-pointer hover:text-[#008FC5]">Book an Appointment
+                </li>
+                <li class="text-[16px] font-medium mt-[5px] cursor-pointer hover:text-[#008FC5]">Make an Enquiry</li>
+                <li class="text-[16px] font-medium mt-[5px] cursor-pointer hover:text-[#008FC5]">Feedback</li>
+                <li class="text-[16px] font-medium mt-[5px] cursor-pointer hover:text-[#008FC5]">Health Check Package
+                </li>
+            </ul>
+        </div>
+
+        <div class="3rdPart ml-[720px] mt-[-247px]">
+            <ul>
+                <li class="text-[20px] font-semibold hover:text-[#ED1C24] cursor-pointer">What we treat</li>
+                <li class="text-[16px] font-medium cursor-pointer hover:text-[#008FC5]">Chest Pain</li>
+                <li class="text-[16px] font-medium mt-[5px] cursor-pointer hover:text-[#008FC5]">Heart Attack</li>
+                <li class="text-[16px] font-medium mt-[5px] cursor-pointer hover:text-[#008FC5]">Varicose Veins</li>
+                <li class="text-[16px] font-medium mt-[5px] cursor-pointer hover:text-[#008FC5]">Thyroid Problems</li>
+                <li class="text-[16px] font-medium mt-[5px] cursor-pointer hover:text-[#008FC5]">View All</li>
+            </ul>
+        </div>
+
+        <div class="4thPart ml-[900px] mt-[-185px]">
+            <ul>
+                <li class="text-[20px] font-semibold hover:text-[#ED1C24] cursor-pointer">For Medical Professionals</li>
+                <li class="text-[16px] font-medium mt-[5px] cursor-pointer hover:text-[#008FC5]">Academics</li>
+                <li class="text-[16px] font-medium mt-[5px] cursor-pointer hover:text-[#008FC5]">Clinical Research</li>
+            </ul>
+        </div>
+        <div class="5thPart ml-[1155px] mt-[-105px]">
+            <ul>
+                <li class="text-[20px] font-semibold hover:text-[#ED1C24] cursor-pointer">Company</li>
+                <li class="text-[16px] font-medium mt-[5px] cursor-pointer hover:text-[#008FC5]">About Us</li>
+                <li class="text-[16px] font-medium mt-[5px] cursor-pointer hover:text-[#008FC5]">Leadership</li>
+                <li class="text-[16px] font-medium mt-[5px] cursor-pointer hover:text-[#008FC5]">Stakeholder Relations
+                </li>
+                <li class="text-[16px] font-medium mt-[5px] cursor-pointer hover:text-[#008FC5]">News & Media Relations
+                </li>
+                <li class="text-[16px] font-medium mt-[5px] cursor-pointer hover:text-[#008FC5]">Careers</li>
+                <li class="text-[16px] font-medium mt-[5px] cursor-pointer hover:text-[#008FC5]">CSR</li>
+                <li class="text-[16px] font-medium  cursor-pointer hover:text-[#008FC5]">Contact Us</li>
+            </ul>
+        </div>
+
+        <div class="6thPart ml-[1315px] mt-[-245px]">
+            <ul>
+                <li class="text-[20px] font-semibold hover:text-[#ED1C24] cursor-pointer">International</li>
+                <li class="text-[16px] font-medium mt-[5px] cursor-pointer hover:text-[#008FC5]">International
+                    Patientcare</li>
+            </ul>
+        </div>
+    </footer>
+
+    <footer class="2ndFooter h-[83px]">
+        <ul class="flex gap-x-10 h-[50px] ml-[88px] mt-[27px]">
+            <li>NPPA Implant Pricing</li>
+            <li>Terms & Conditions</li>
+            <li>Privacy Policy</li>
+            <li>Disclaimer</li>
+            <li class="ml-[423px] drop-shadow-md">© Narayana Hrudayalaya Ltd | All Rights Reserved</li>
+        </ul>
+    </footer>
+
+</body>
+
+<script src="scripts/appointment.js"></script>
+
+</html>
